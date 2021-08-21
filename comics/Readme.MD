@@ -9,3 +9,31 @@ END OF MODULE PROJECT (CAPSTONE PROJECT)
 |                      | - https://xkcd.com/2475/info.0.json
 |                      | Create a custom website to display 3 comics with comic title, comic image, and 3 buttons above it (prev, random, next) to control what comics to show.
 |                      | Something like below, with the difference that you need to show the comic before it and after it. For example if the current image is image 200, then you should show image 199 on the left and image 201 on the right. When the current image is the last image (2475), then show image 2474 on the left and image 1 on the right.
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Layer 1</th>
+            <th>Layer 2</th>
+            <th>Layer 3</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=4>L1 Name</td>
+            <td rowspan=2>L2 Name A</td>
+            <td>L3 Name A</td>
+        </tr>
+        <tr>
+            <td>L3 Name B</td>
+        </tr>
+        <tr>
+            <td rowspan=2>L2 Name B</td>
+            <td>L3 Name C</td>
+        </tr>
+        <tr>
+            <td>L3 Name D</td>
+        </tr>
+    </tbody>
+</table>
