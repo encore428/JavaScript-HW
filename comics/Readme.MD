@@ -1,7 +1,7 @@
 END OF MODULE PROJECT (CAPSTONE PROJECT)
 
 | Project Title /      | Implement a xkcd comic reader
-| Description          | asd
+| Description          | 
 |----------------------|----------------------------------------------------------------------------------------------------------------------
 | Project Objective(s) | xkcd.com is a webcomic site that provides its api as documented at https://xkcd.com/json.html
 |                      | You can get the specific comics using the endpoints like below
