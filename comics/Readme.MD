@@ -18,6 +18,7 @@ END OF MODULE PROJECT (CAPSTONE PROJECT)
                     <li> Latest: https://xkcd.now.sh/?comic=latest</li>
                     <li> Comic #303 (and so on...): https://xkcd.now.sh/?comic=303</li>
                 </ul>
+        <br>
                 <p>Create a custom website to display 3 comics with comic title, comic image, and 3 buttons above it (prev, random, next) to control what comics to show.
                 <p>Something like below, with the difference that you need to show the comic before it and after it.
                     For example if the current image is image 200, then you should show image 199 on the left and image 201 on the right.
