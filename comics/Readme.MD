@@ -49,6 +49,6 @@ END OF MODULE PROJECT (CAPSTONE PROJECT)
 
 ## Wireframe
 
-![wireframe](/wireframe.png)
+![wireframe](./wireframe.png)
 
 
