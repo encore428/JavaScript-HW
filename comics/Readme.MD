@@ -13,11 +13,6 @@ END OF MODULE PROJECT (CAPSTONE PROJECT)
                     <li>https://xkcd.com/600/info.0.json
                     <li>https://xkcd.com/2475/info.0.json
                 </ul>
-                <p>Due to CORS constraint, the api at https://xkcd.vercel.app/ is used instead.</P.
-                <ul>
-                    <li> Latest: https://xkcd.now.sh/?comic=latest</li>
-                    <li> Comic #303 (and so on...): https://xkcd.now.sh/?comic=303</li>
-                </ul>
         <br>
                 <p>Create a custom website to display 3 comics with comic title, comic image, and 3 buttons above it (prev, random, next) to control what comics to show.
                 <p>Something like below, with the difference that you need to show the comic before it and after it.
@@ -45,11 +40,9 @@ END OF MODULE PROJECT (CAPSTONE PROJECT)
 </table>
 
 **Constraints:**
- The https://xkcd.com/json.html API rejects fetch requests from Java scripts with CORS error.  We are using a proxy to access it.  The proxy
- https://intro-to-js-playground.vercel.app/api/xkcd-comics/ cannot handle request https://xkcd.com/info.0.json that returns the latest comic,
- which should be the preferered starting point.  Currently, we are starting at comic number 1 instead.
- 
-- develop a function with this specc:
-- pageSize is 1 or 3 or 5, indicates how many comics are displayed on each page.
-- curNum is the Comic serial being displayed.  It is initialised to 1.
-- 
+ The https://xkcd.com/json.html API rejects fetch requests from Java scripts with CORS error.  The api at https://xkcd.vercel.app/ is used instead.
+<ul>
+    <li> Latest: https://xkcd.now.sh/?comic=latest</li>
+    <li> Comic #303 (and so on...): https://xkcd.now.sh/?comic=303</li>
+</ul>
+
