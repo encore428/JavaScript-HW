@@ -52,7 +52,7 @@ END OF MODULE PROJECT (CAPSTONE PROJECT)
 - User can use a selector to switch the page sizes between 1, 3 and 5.
 - User can input a picture number to display that picture as current picture.
 - User can click a button to randomly select current picture.
-- User can click a next page and previous page button to move the next page or previous page.
+- User can click a next page and previous page button to move to the next page or previous page.
 - When picture are being loaded, the scren shows 'Loading, please wait...'.
 
 ## Wireframe
