@@ -47,6 +47,14 @@ END OF MODULE PROJECT (CAPSTONE PROJECT)
     </tbody>
 </table>
 
+## User Requirements:
+- Comics viewer opens with 3 pictures per page, where the current picture is the latest picture in the repository.
+- User can use a selector to switch the page sizes between 1, 3 and 5.
+- User can input a picture number to display that picture as current picture.
+- User can click a button to randomly select current picture.
+- User can click a next page and previous page button to move the next page or previous page.
+- When picture are being loaded, the scren shows 'Loading, please wait...'.
+
 ## Wireframe
 
 ![wireframe](./wireframe.png)
