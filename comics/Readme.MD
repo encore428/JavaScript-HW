@@ -36,13 +36,17 @@ END OF MODULE PROJECT (CAPSTONE PROJECT)
             <td>Mode of Delivery</td>
             <td>Group Consultation + Group Presentation</td>
         </tr>
-    </tbody>
-</table>
-
-**Constraints:**
- The https://xkcd.com/json.html API rejects fetch requests from Java scripts with CORS error.  The api at https://xkcd.vercel.app/ is used instead.
+        <tr>
+            <td>**Constraints:**</td>
+            <td>The https://xkcd.com/json.html API rejects fetch requests from Java scripts with CORS error.  The api at https://xkcd.vercel.app/ is used instead.
 <ul>
     <li> Latest: https://xkcd.now.sh/?comic=latest</li>
     <li> Comic #303 (and so on...): https://xkcd.now.sh/?comic=303</li>
-</ul>
+</ul></td>
+        </tr>
+    </tbody>
+</table>
+
+
+ 
 
