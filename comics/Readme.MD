@@ -47,6 +47,8 @@ END OF MODULE PROJECT (CAPSTONE PROJECT)
     </tbody>
 </table>
 
+## Wireframe
 
- 
+![wireframe](/wireframe.png)
+
 
