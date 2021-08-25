@@ -1,1 +1,9 @@
-This folder is for submission of Java script home works.
+## This repository is for course work submission:
+**Course**: Fundamentals in JavsScript Development.
+<br>**Student**: Lee Sik On.
+<br>**Organizaton**: PowerX, SG Innovate.
+
+- [**Day 1**](Day 1/README.md) : Day 1 Google imitation page
+- [**Day 2**](Day 2/README.md) : Day 2 activities: JS exercises
+- [**comics**](comics/Readme.MD) : JavaScript comic reader
+
