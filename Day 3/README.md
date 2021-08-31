@@ -1,3 +1,9 @@
+# Submission
+Submitted: 2021-07-19<br>
+Objects: video.js<br>
+URL: https://codesandbox.io/s/intro-to-js-playground-forked-y29v8?file=/public/javascripts/video.js<br>
+
+
 # Take Home Homework (Day 3)
 Visit “About Us” page (/about-us) and scroll to “Our vision” section.
 Add code in public/javascripts/video.js so that:
@@ -7,9 +13,4 @@ Add code in public/javascripts/video.js so that:
 Reference:
 - Learn about playing/pausing video loaded with <video> HTML element in this article.
 
-
-# Submission
-Submitted: 2021-07-19
-Objects: video.js
-URL: https://codesandbox.io/s/intro-to-js-playground-forked-y29v8?file=/public/javascripts/video.js
 
