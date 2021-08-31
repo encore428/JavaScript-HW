@@ -1,15 +1,14 @@
 
 # Submission
-Submitted: 2021-07-09 to Google drive under Students_PowerX\Submissions\Lee Sik On
+Submitted: 2021-07-09 to Google drive under Students_PowerX\Submissions\Lee Sik On\Day 1 Activities\
+
 Objects: 
 - G00gle.html: the page in html
 - site.css: provides styling
 - site,js: displays an alert message upon page load to notify user that this is a fake page.
 
 
-
 ## Take Home Homework (Day 1)
-
 
 Activity 1
 • Create a webpage as similar as possible on the surface than a basic Google page.
