@@ -6,8 +6,9 @@ Objects:
 
 
 <b>JsFunctions.html</b><br>
-Open the html file with a browser.  Remember to open the console log to view the test results.  The following activities and exercises are covered:
+Open the html file with a browser.  Remember to open the console log to view the test results.
 
+The following activities and exercises are covered:
 * W1S3 Activity 1 – Ask for user’s age
 * W2S2 Activity 1: compute the roots of a quadratic equation, with strictly positive determinant
 * W2S2 Activity 2: Ballistics of an angry bird
@@ -16,8 +17,9 @@ Open the html file with a browser.  Remember to open the console log to view the
 * W1S3 Exercise: prime number
 
 <b>W2S2.js</b><br>
-Paste content into Scrimba.com or browser console to view code and check test results.  The following activities and exercises are covered:
+Paste content into Scrimba.com or browser console to view code and check test results.
 
+The following activities and exercises are covered:
 * W2S2 Activity #1: Fibonacci sequence
 * W2S2 Activity #2: McCarthy 91 function
 * W2S2 Activity #3: Euclide Algorithm for the GCD
