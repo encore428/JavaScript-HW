@@ -1,25 +1,25 @@
 const API_URL = "https://xkcd.now.sh/";    // API for loading comics
-let pageSize = 3;                          // this is the initial page size.
 // the rest are working variables.
-let totalComics = 0;
-let loadedComics = [];
-let curComic = 0;
-let harvestCnt = 0;
+let totalComics = 0;     // Upon page initial load, this is assigned the value of the total number of comics available on portal.
+let pageSize = 3;        // Initial page size, it can be altered by the user.
+let focusComic = 0;      // The serial number of the comic currently in focus, and is displayed in the centre.
+                         // When the page size is large than 1, additional comics before and after it are displayed.
+let loadedComics = [];   // Array of details of  required comics are loaded onto this array first before rendering.
+let harvestCnt = 0;      // Acts as a counter to track the number of comics loaded into the array.
+                         // Once the array is full, the comic rendering starts.
 
 
 // const initLoad()
 // This is invoked when the JS is loaded, 
-// to fetch from API to obtain the serial number of the latest comics, to be used as current comics.
-// It then proced to load a page of comics and render.
+// to fetch from API to obtain the serial number of the latest comics, to be used as focus comic.
+// It then proceed to load a page of comics and render.
 const initLoad = () => { 
-    apiStr = `${API_URL}?comic=latest`;
-    fetch(apiStr)
+    fetch(`${API_URL}?comic=latest`)
         .then(response => response.json())  // convert to json
         .then(json => {
 			totalComics = json.num;
-			curComic    = json.num;
-			// after getching the latest comic, proceed to load a page
-			pageLoad(0, 0);
+			// after fetching the latest comic, proceed to load a page, focus on latest comic, using current page size
+			pageLoad(json.num, 0, 0);
          })
         .catch(err => console.log('Request Failed', err)); // Catch errors
 }	
@@ -29,7 +29,7 @@ const initLoad = () => {
 // args: num : the current Comic serial number.
 // 1. num is the serial of the comic to be retrieved.
 // 2. num should be in the range of 1 to totalComics, if it is, it is returned intact.
-// 3. Because of page up and down, num my be set to values outside the normal range.
+// 3. Because of paging up and down, num my be set to values outside the normal range.
 //    When this happens, this function returns it to the normal range.
 // 4. When num is 0, it refers to the latest comic, so value of totalComics is returned.
 // 5. When num is negative, it refers to the comic counting backward from the end.
@@ -91,8 +91,7 @@ const harvester = () => {
 //        HTML rendering can begin.
 const getComic = (num, i) => { 
     num = recycleComicSerial(num);
-    let apiStr = `${API_URL}?comic=${num}`;
-    fetch(apiStr)
+    fetch(`${API_URL}?comic=${num}`)
         // Handle success
         .then(response => response.json())  // convert to json
         .then(json => {
@@ -103,22 +102,31 @@ const getComic = (num, i) => {
 }	
 
 
-// const: pageLoad = (pageMvnt, newPageSize=0): is called to load a fresh page of comics.
-// args: pageMvnt is the page movement.  It noramlly assumes the values of -1, 0, or 1.
-//                  -1 means to page up
-//                   0 means to stay on curent page
-//                  +1 means to page down
-//                  page number is not tracked, instead it is the curComic serial that is 
-//                  modified so as to load another page of comics.
+// const: pageLoad = (goComic, pageMvnt, newPageSize=0): is called to load a fresh page of comics.
+// args: goComic     is comic to focus on.  If it is 0, the focus remains at focusComic.
+//                   When this is not zero, pageMvnt is ignored.
+//       pageMvnt    is the page movement.  It noramlly assumes the values of -1, 0, or 1.
+//                     -1 means to page up
+//                      0 means to stay on curent page
+//                     +1 means to page down
+//                     page number is not tracked, instead it is the focusComic serial that is 
+//                     modified so as to load another page of comics.
 //       newPageSize is the new page size.  It should assume the values of 0, 1, 3, or 5.
 //                   0 means no change.
-function pageLoad(pageMvnt, newPageSize=0) {
+function pageLoad(goComic, pageMvnt, newPageSize=0) {
 	pleaseWait(true);
-	if ((newPageSize===1) || (newPageSize===3) || (newPageSize===5)) {pageSize=newPageSize;}
-    curComic = recycleComicSerial(curComic + pageMvnt * pageSize);
+	if ((newPageSize===1) || (newPageSize===3) || (newPageSize===5)) {
+		pageSize=newPageSize;
+        document.getElementById('pageSz').value=pageSize;
+	}
+	if (goComic !== 0) {
+		focusComic = goComic;
+	} else {
+		focusComic = recycleComicSerial(focusComic + pageMvnt * pageSize);
+	}
     harvestCnt = 0;
     for (let i = 0; i < pageSize;i++) {
-        getComic( curComic - (Math.floor(pageSize/2))+i, i);
+        getComic( focusComic - (Math.floor(pageSize/2))+i, i);
     }
 }
 
@@ -129,7 +137,7 @@ function pageLoad(pageMvnt, newPageSize=0) {
 function pleaseWait(wait) {
 	document.getElementById('btngocomic').disabled = wait;
 	document.getElementById('gorand').disabled = wait;
-	document.getElementById('count').disabled = wait;
+	document.getElementById('pageSz').disabled = wait;
 	document.getElementById('pageU').disabled = wait;
 	document.getElementById('pageD').disabled = wait;
 	if (wait) {
@@ -142,19 +150,18 @@ function pleaseWait(wait) {
 }
 
 
-// function goComic: button click event handler to allow users to go to a specific comic 
+// function btnHandler: button click event handler to allow users to go to a specific comic 
 //                   of serial as entered in a input field, or generated randomly.
-function goComic(event) {
+function btnHandler(event) {
     event.preventDefault();
 	switch(event.target.id) {
 	    case ('gorand'):
-			curComic = Math.floor(Math.random()*totalComics);
-			pageLoad(0,0);
+			pageLoad(Math.floor(Math.random()*totalComics) + 1, 0, 0);
 			break;
-		case('pageU'): pageLoad(-1, 0); break;
-		case('pageD'): pageLoad( 1, 0); break;
-		case('count'): 
-		    pageLoad(0,Number(document.getElementById('count').value));
+		case('pageU'): pageLoad(0, -1, 0); break;
+		case('pageD'): pageLoad(0,  1, 0); break;
+		case('pageSz'): 
+		    pageLoad(0, 0, Number(document.getElementById('pageSz').value));
 			break;
 		case('goform'):
 			let inpStr = document.getElementById('gocomic').value;
@@ -169,9 +176,8 @@ function goComic(event) {
 					alert(`Please enter a number in the range from 0 to ${totalComics}.`);
 					document.getElementById('gocomic').focus();
 				} else {
-					curComic = Number(inpStr);
 					document.getElementById('gocomic').value = "";
-					pageLoad(0,0);
+					pageLoad(Number(inpStr), 0, 0);
 				}
 			}
 			break;
@@ -179,11 +185,11 @@ function goComic(event) {
 }
 
 
-document.getElementById('goform').addEventListener('submit', goComic);
-document.getElementById('gorand').addEventListener('click', goComic);
-document.getElementById('pageU').addEventListener('click', goComic);
-document.getElementById('pageD').addEventListener('click', goComic);
-document.getElementById('count').value=pageSize;
-document.getElementById('count').addEventListener('change', goComic);
+document.getElementById('goform').addEventListener('submit', btnHandler);
+document.getElementById('gorand').addEventListener('click', btnHandler);
+document.getElementById('pageU').addEventListener('click', btnHandler);
+document.getElementById('pageD').addEventListener('click', btnHandler);
+document.getElementById('pageSz').value=pageSize;
+document.getElementById('pageSz').addEventListener('change', btnHandler);
 
 initLoad();
