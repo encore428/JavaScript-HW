@@ -1,6 +1,6 @@
 # Submission
-Submitted: 2021-08-01
-Objects: pricing.js
+Submitted: 2021-08-01<br>
+Objects: pricing.js<br>
 URL: https://codesandbox.io/s/intro-to-js-playground-forked-y29v8?file=/public/javascripts/pricing.js
 
 The java script has two immediately invoked functions:
