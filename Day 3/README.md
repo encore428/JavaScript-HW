@@ -11,6 +11,6 @@ Add code in public/javascripts/video.js so that:
 1. When the button is clicked again, the video will paused and the button will be changed back to “Watch video”.
 
 Reference:
-- Learn about playing/pausing video loaded with <video> HTML element in this article.
+- Learn about playing/pausing video loaded with <video> HTML element in this [article](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play).
 
 
