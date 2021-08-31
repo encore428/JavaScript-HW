@@ -1,17 +1,3 @@
-## Take Home Homework (Day 4)
-
-Visit “Pricing” page (/pricing).
-
-Add code in public/javascripts/pricing.js so that:
-1. The price displayed in the page will be according to the data retrieved from /api/pricing.
-1. When the “Monthly billing” and “Yearly billing” button are clicked:
-a. the price unit will be updated (“/mo” for monthly and “/yr” for yearly).
-a. the price for each tier should be updated as well.
-
-Reference:
-- Learn about Array .find method in this article.
-
-
 # Submission
 Submitted: 2021-08-01
 Objects: pricing.js
@@ -33,5 +19,19 @@ initButtons():
 1.	The event listener checks which button has been clicked.
 1.	If monthly billing button is clicked, elements of class pricemth are un-hidden while elements of class priceyly are hidden, and the opposite if yearly button is clicked.
 1.	The event listener also toggles the bg-color of the button accordingly.
+
+
+# Take Home Homework (Day 4)
+
+Visit “Pricing” page (/pricing).
+
+Add code in public/javascripts/pricing.js so that:
+1. The price displayed in the page will be according to the data retrieved from /api/pricing.
+1. When the “Monthly billing” and “Yearly billing” button are clicked:
+a. the price unit will be updated (“/mo” for monthly and “/yr” for yearly).
+a. the price for each tier should be updated as well.
+
+Reference:
+- Learn about Array .find method in this article.
 
 
