@@ -1,5 +1,7 @@
 END OF MODULE PROJECT (CAPSTONE PROJECT)
 
+This project has been deployed at https://encore428.github.io/comicreader.io/
+
 <table>
     <thead> <tr><th>Project Title / Description</th>    <th>Implement a xkcd comic reader</th></tr> </thead>
     <tbody>
