@@ -117,7 +117,7 @@ function pageLoad(goComic, pageMvnt, newPageSize=0) {
 	pleaseWait(true);
 	if ((newPageSize===1) || (newPageSize===3) || (newPageSize===5)) {
 		pageSize=newPageSize;
-        document.getElementById('pageSz').value=pageSize;
+        	document.getElementById('pageSz').value=pageSize;
 	}
 	if (goComic !== 0) {
 		focusComic = goComic;
