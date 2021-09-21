@@ -17,9 +17,9 @@ const initLoad = () => {
     fetch(`${API_URL}?comic=latest`)
         .then(response => response.json())  // convert to json
         .then(json => {
-			totalComics = json.num;
-			// after fetching the latest comic, proceed to load a page, focus on latest comic, using current page size
-			pageLoad(json.num, 0, 0);
+		totalComics = json.num;
+		// after fetching the latest comic, proceed to load a page, focus on latest comic, using current page size
+		pageLoad(json.num, 0, 0);
          })
         .catch(err => console.log('Request Failed', err)); // Catch errors
 }	
@@ -48,7 +48,7 @@ function renderComics() {
 	const div = document.getElementById('comics');
 	while (div.firstChild) {div.removeChild(div.lastChild);}
 	div.className=`sm:grid sm:grid-cols-2 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-${pageSize}`
-    for (let i=0; i< pageSize ;i++) {
+	for (let i=0; i< pageSize ;i++) {
 		const div1 = document.createElement('div');
 		div1.className = 'border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200';
 			{
@@ -124,10 +124,10 @@ function pageLoad(goComic, pageMvnt, newPageSize=0) {
 	} else {
 		focusComic = recycleComicSerial(focusComic + pageMvnt * pageSize);
 	}
-    harvestCnt = 0;
-    for (let i = 0; i < pageSize;i++) {
-        getComic( focusComic - (Math.floor(pageSize/2))+i, i);
-    }
+	harvestCnt = 0;
+    	for (let i = 0; i < pageSize;i++) {
+        	getComic( focusComic - (Math.floor(pageSize/2))+i, i);
+    	}
 }
 
 
@@ -156,32 +156,32 @@ function btnHandler(event) {
     event.preventDefault();
 	switch(event.target.id) {
 	    case ('gorand'):
-			pageLoad(Math.floor(Math.random()*totalComics) + 1, 0, 0);
-			break;
-		case('pageU'): pageLoad(0, -1, 0); break;
-		case('pageD'): pageLoad(0,  1, 0); break;
-		case('pageSz'): 
-		    pageLoad(0, 0, Number(document.getElementById('pageSz').value));
-			break;
-		case('goform'):
-			let inpStr = document.getElementById('gocomic').value;
-			if (inpStr==="") {
-				alert(`Please enter the serial number of the Comics to view.`);
+		pageLoad(Math.floor(Math.random()*totalComics) + 1, 0, 0);
+		break;
+	    case('pageU'): pageLoad(0, -1, 0); break;
+	    case('pageD'): pageLoad(0,  1, 0); break;
+	    case('pageSz'): 
+	    	pageLoad(0, 0, Number(document.getElementById('pageSz').value));
+		break;
+	    case('goform'):
+		let inpStr = document.getElementById('gocomic').value;
+		if (inpStr==="") {
+			alert(`Please enter the serial number of the Comics to view.`);
+			document.getElementById('gocomic').focus();
+		} else {
+			if (isNaN(Number(inpStr))) {
+				alert(`Please enter a valid number`);
+				document.getElementById('gocomic').focus();
+			} else if ((Number(inpStr) < 0) || (Number(inpStr) > totalComics)) {
+				alert(`Please enter a number in the range from 0 to ${totalComics}.`);
 				document.getElementById('gocomic').focus();
 			} else {
-				if (isNaN(Number(inpStr))) {
-					alert(`Please enter a valid number`);
-					document.getElementById('gocomic').focus();
-				} else if ((Number(inpStr) < 0) || (Number(inpStr) > totalComics)) {
-					alert(`Please enter a number in the range from 0 to ${totalComics}.`);
-					document.getElementById('gocomic').focus();
-				} else {
-					document.getElementById('gocomic').value = "";
-					pageLoad(Number(inpStr), 0, 0);
-				}
+				document.getElementById('gocomic').value = "";
+				pageLoad(Number(inpStr), 0, 0);
 			}
-			break;
 		}
+		break;
+	}
 }
 
 
